@@ -1,37 +1,68 @@
 ﻿namespace Dentist.ViewModels
 {
-
-    using Pratice1_2018_II.Domain.Models;
     using System.Collections.ObjectModel;
     using Services;
-    using System;
     using Xamarin.Forms;
     using System.Collections.Generic;
+    using Dentist.Models;
+    using System.Windows.Input;
+    using GalaSoft.MvvmLight.Command;
 
     public class PatientsViewModel : BaseViewModel
     {
+        #region Methods
         private ApiService apiService;
         private async void LoadPatients()
         {
-            var response = await this.apiService.Getlist<Patient>("https://pratice1-2018-iiapi.azurewebsites.net", "/api", "/Patients");
+            this.IsRefreshing = true;
+            var connection = await this.apiService.CheckConnection();
+            if (!connection.IsSuccess)
+            {
+                this.IsRefreshing = false;
+                await Application.Current.MainPage.DisplayAlert("Error", connection.Message, "Accept");
+                return;
+
+            }
+            var url = Application.Current.Resources["UrlAPI"].ToString();
+            var prefix = Application.Current.Resources["UrlPrefix"].ToString();
+            var patientsController = Application.Current.Resources["UrlPatientsController"].ToString();
+            var response = await this.apiService.Getlist<Patient>(url, prefix, patientsController);
             if (!response.IsSuccess)
             {
+                this.IsRefreshing = false;
                 await Application.Current.MainPage.DisplayAlert("Error", response.Message, "Accept");
                 return;
             }
+            this.IsRefreshing = false;
             var list = (List<Patient>)response.Result;
             this.Patients = new ObservableCollection<Patient>(list);
+            
+
         }
-
+        #endregion
         #region Attributes
-
+        private ObservableCollection<Patient> patients;
+        private bool isRefreshing;
+        private bool refreshCommand;
+        
         #endregion
         #region Properties
-        private ObservableCollection<Patient> patients;
         public ObservableCollection<Patient> Patients {
             get { return this.patients; }
             set { this.SetValue(ref this.patients, value); }
         }
+        public bool IsRefreshing {
+            get { return this.isRefreshing; }
+            set { this.SetValue(ref this.isRefreshing, value); }
+        }
+        public ICommand RefreshCommand
+        {
+            get
+            {
+                return new RelayCommand(LoadPatients);
+            }
+        }
+
 
 
         #endregion

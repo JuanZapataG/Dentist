@@ -7,8 +7,8 @@
     <ProjectGuid>{C4228CA4-ADDB-4D3C-8D1C-3556D0B92D41}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Dentist.Conmmon</RootNamespace>
-    <AssemblyName>Dentist.Conmmon</AssemblyName>
+    <RootNamespace>Dentist.Common</RootNamespace>
+    <AssemblyName>Dentist.Common</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

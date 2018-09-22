@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:i18n="clr-namespace:Dentist.Helpers"
+             x:Class="Dentist.Views.PatientsPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title ="{i18n:Translate Patients}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="ic_action_add_circle.png" Command="{Binding AddPatientCommand}"/>
+
+
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout 
+            Padding="5"
+            BindingContext="{Binding Patients}">
+            <ListView
+                HasUnevenRows="True"
+                IsRefreshing="{Binding IsRefreshing}"
+                ItemsSource="{Binding Patients}"
+                IsPullToRefreshEnabled="True"
+                RefreshCommand="{Binding RefreshCommand}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image 
+                                    Grid.Column="0"
+                                    Source="{Binding ImageFullPath }"
+                                    WidthRequest="100">
+                                    
+                                </Image>
+                                <StackLayout 
+                                    Grid.Column="1"
+                                     VerticalOptions="Center">
+                                    <Label
+                                    FontAttributes="Bold"
+                                    Text="{Binding FirstName}"
+                                   >
+                                    </Label>
+                                    <Label
+                                    FontAttributes="Bold"
+                                    Text="{Binding LastName}"
+                                   >
+                                    </Label>
+                                </StackLayout>
+                                
+                                <Label
+                                    Grid.Column="2"
+                                    Text="{Binding PatientSince}"
+                                    VerticalOptions="Center">
+                                </Label>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

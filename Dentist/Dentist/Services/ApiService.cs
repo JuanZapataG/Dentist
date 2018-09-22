@@ -5,8 +5,10 @@
     using System.Net.Http;
     using System.Threading.Tasks;
     using Dentist.Conmmon.Models;
+    using Dentist.Helpers;
     using Newtonsoft.Json;
     using Plugin.Connectivity;
+    using Xamarin.Forms;
 
     public class ApiService
     {
@@ -18,17 +20,17 @@
                 return new Response
                 {
                     IsSuccess = false,
-                    Message = "Please turn on your internet settings",
+                    Message = Languages.TurnOnInternet,
                 };
             }
-
+            
             var isReachable = await CrossConnectivity.Current.IsRemoteReachable("google.com");
             if (!isReachable)
             {
                 return new Response
                 {
                     IsSuccess = false,
-                    Message = "No internet conection",
+                    Message = Languages.NoInternet,
                 };
             }
 

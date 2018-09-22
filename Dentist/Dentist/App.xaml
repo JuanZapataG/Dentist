@@ -12,6 +12,7 @@
             <x:String x:Key="UrlAPI">Https://pratice1-2018-iiapi.azurewebsites.net</x:String>
             <x:String x:Key="UrlPrefix">/api</x:String>
             <x:String x:Key="UrlPatientsController">/Patients</x:String>
+         
         </ResourceDictionary>
 
     </Application.Resources>

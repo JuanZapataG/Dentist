@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Pratice1_2018_II.Domain.Models.Animal>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ScientificName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ZooLocation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Characteristics)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImagePath)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsWayToExtintion)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ScientificName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ZooLocation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Characteristics)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImagePath)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsWayToExtintion)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.AnimalId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.AnimalId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.AnimalId })
+        </td>
+    </tr>
+}
+
+</table>

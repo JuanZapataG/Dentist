@@ -132,4 +132,100 @@
   <data name="Patients" xml:space="preserve">
     <value>Patients</value>
   </data>
+  <data name="AddPatients" xml:space="preserve">
+    <value>Add Patients</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="DescriptionFirstName" xml:space="preserve">
+    <value>Enter your first name</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>LastName</value>
+  </data>
+  <data name="DescriptionLastName" xml:space="preserve">
+    <value>Enter your last name</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="DescriptionAddress" xml:space="preserve">
+    <value>Enter your address</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="DescriptionPhone" xml:space="preserve">
+    <value>Enter your Phone</value>
+  </data>
+  <data name="PatientSince" xml:space="preserve">
+    <value>Patient Since</value>
+  </data>
+  <data name="DescriptionPatientSince" xml:space="preserve">
+    <value>Enter date of appointment</value>
+  </data>
+  <data name="TreatmentDescription" xml:space="preserve">
+    <value>Treatment Description</value>
+  </data>
+  <data name="DescriptionTreatmentDescription" xml:space="preserve">
+    <value>Enter the description of the treatment</value>
+  </data>
+  <data name="ImagePath" xml:space="preserve">
+    <value>Touch the image to change it.</value>
+  </data>
+  <data name="HasAllergies" xml:space="preserve">
+    <value>Has Allergies</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="FirtsNameError" xml:space="preserve">
+    <value>You a must enter a Firts Name</value>
+  </data>
+  <data name="LastNameError" xml:space="preserve">
+    <value>You a must enter a Last Name</value>
+  </data>
+  <data name="AddressError" xml:space="preserve">
+    <value>You a must enter a Address</value>
+  </data>
+  <data name="PhoneError" xml:space="preserve">
+    <value>You a must enter a Phone</value>
+  </data>
+  <data name="TreatmentDescriptionError" xml:space="preserve">
+    <value>You a must enter a Treatment Description</value>
+  </data>
+  <data name="ImageSource" xml:space="preserve">
+    <value>Where do you take the picture?</value>
+  </data>
+  <data name="FromGallery" xml:space="preserve">
+    <value>From gallery</value>
+  </data>
+  <data name="NewPicture" xml:space="preserve">
+    <value>Take a new picture</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="DeleteConfirmation" xml:space="preserve">
+    <value>Are your sure to delete this</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="EditPatients" xml:space="preserve">
+    <value>Edit Patients</value>
+  </data>
 </root>

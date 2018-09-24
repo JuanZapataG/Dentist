@@ -132,4 +132,100 @@
   <data name="Patients" xml:space="preserve">
     <value>Pacientes</value>
   </data>
+  <data name="AddPatients" xml:space="preserve">
+    <value>¡Agregar a pacientes!</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="DescriptionFirstName" xml:space="preserve">
+    <value>Ingresa tu nombre</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Apellido</value>
+  </data>
+  <data name="DescriptionLastName" xml:space="preserve">
+    <value>Introduzca su apellido</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Dirección</value>
+  </data>
+  <data name="DescriptionAddress" xml:space="preserve">
+    <value>Introduce tu dirección</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Teléfono</value>
+  </data>
+  <data name="DescriptionPhone" xml:space="preserve">
+    <value>Ingrese su Teléfono</value>
+  </data>
+  <data name="PatientSince" xml:space="preserve">
+    <value>¡Paciente desde!</value>
+  </data>
+  <data name="DescriptionPatientSince" xml:space="preserve">
+    <value>¡Ingrese la fecha de cita!</value>
+  </data>
+  <data name="TreatmentDescription" xml:space="preserve">
+    <value>Descripción del tratamiento</value>
+  </data>
+  <data name="DescriptionTreatmentDescription" xml:space="preserve">
+    <value>¡Escriba la descripción del tratamiento!</value>
+  </data>
+  <data name="HasAllergies" xml:space="preserve">
+    <value>Alergias</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Guardar</value>
+  </data>
+  <data name="ImagePath" xml:space="preserve">
+    <value>Toca la imagen para cambiarla.</value>
+  </data>
+  <data name="FirtsNameError" xml:space="preserve">
+    <value>Usted debe ingresar un nombre de primer!</value>
+  </data>
+  <data name="LastNameError" xml:space="preserve">
+    <value>¡Debe introducir un Apellido!</value>
+  </data>
+  <data name="AddressError" xml:space="preserve">
+    <value>Usted debe ingresar una dirección!</value>
+  </data>
+  <data name="PhoneError" xml:space="preserve">
+    <value>Usted debe ingresar un teléfono!</value>
+  </data>
+  <data name="TreatmentDescriptionError" xml:space="preserve">
+    <value>Usted debe ingresar una descripción del tratamiento!</value>
+  </data>
+  <data name="ImageSource" xml:space="preserve">
+    <value>¿Dónde tomas la foto?</value>
+  </data>
+  <data name="FromGallery" xml:space="preserve">
+    <value>Elige de la galería</value>
+  </data>
+  <data name="NewPicture" xml:space="preserve">
+    <value>¡Lleva una fotografía!</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>¡Cancelar!</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>¡Eliminar!</value>
+  </data>
+  <data name="DeleteConfirmation" xml:space="preserve">
+    <value>Está seguro de eliminar esto?</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>¡Sí!</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>¡No!</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>¡Confirma!</value>
+  </data>
+  <data name="EditPatients" xml:space="preserve">
+    <value>¡Editar a pacientes!</value>
+  </data>
 </root>

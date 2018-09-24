@@ -17,12 +17,16 @@
             <ListView
                 HasUnevenRows="True"
                 IsRefreshing="{Binding IsRefreshing}"
-                ItemsSource="{Binding Patients}"
                 IsPullToRefreshEnabled="True"
+                ItemsSource="{Binding Patients}"
                 RefreshCommand="{Binding RefreshCommand}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem Text="{i18n:Translate Edit}" Command="{Binding EditPatientCommand}"/>
+                                <MenuItem Text="{i18n:Translate Delete}" Command="{Binding DeletePatientCommand}" IsDestructive="True"/>
+                            </ViewCell.ContextActions>
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>

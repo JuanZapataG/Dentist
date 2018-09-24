@@ -8,6 +8,8 @@
     using System.Windows.Input;
     using GalaSoft.MvvmLight.Command;
     using Dentist.Helpers;
+    using System.Linq;
+    using System;
 
     public class PatientsViewModel : BaseViewModel
     {
@@ -22,7 +24,6 @@
                 this.IsRefreshing = false;
                 await Application.Current.MainPage.DisplayAlert(Languages.Error, connection.Message, Languages.Accept);
                 return;
-
             }
             var url = Application.Current.Resources["UrlAPI"].ToString();
             var prefix = Application.Current.Resources["UrlPrefix"].ToString();
@@ -34,21 +35,45 @@
                 await Application.Current.MainPage.DisplayAlert(Languages.Error, response.Message, Languages.Accept);
                 return;
             }
-            this.IsRefreshing = false;
-            var list = (List<Patient>)response.Result;
-            this.Patients = new ObservableCollection<Patient>(list);
             
 
+            this.MyPatients = (List<Patient>)response.Result;
+            this.RefreshList();
+            this.IsRefreshing = false;
+
+        }
+
+        public void RefreshList()
+        {
+            var myListPatientItemViewModel = MyPatients.Select(p => new PatientItemViewModel
+            {
+                PatientId = p.PatientId,
+                FirstName = p.FirstName,
+                LastName = p.LastName,
+                Address = p.Address,
+                Phone = p.Phone,
+                PatientSince = p.PatientSince,
+                TreatmentDescription = p.TreatmentDescription,
+                ImagePath = p.ImagePath,
+                HasAllergies = p.HasAllergies,
+                ImageArray = p.ImageArray,
+
+            });
+            this.Patients = new ObservableCollection<PatientItemViewModel>(
+                myListPatientItemViewModel.OrderBy(p => p.FirstName));
         }
         #endregion
         #region Attributes
-        private ObservableCollection<Patient> patients;
+        private ObservableCollection<PatientItemViewModel> patients;
         private bool isRefreshing;
         private bool refreshCommand;
-        
+
         #endregion
         #region Properties
-        public ObservableCollection<Patient> Patients {
+
+        public List<Patient> MyPatients { get; set; }
+
+        public ObservableCollection<PatientItemViewModel> Patients {
             get { return this.patients; }
             set { this.SetValue(ref this.patients, value); }
         }
@@ -70,9 +95,23 @@
         #region Constructors
         public PatientsViewModel()
         {
+            instance = this;
             this.apiService = new ApiService();
             this.LoadPatients();
         }
+
+        #endregion
+        #region Singleton
+        private static PatientsViewModel instance;
+        public static PatientsViewModel GetInstastance()
+        {
+            if (instance==null)
+            {
+                return new PatientsViewModel();
+            }
+            return instance;
+        }
+
         
         #endregion
         #region Commands

@@ -10,16 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace Dentist.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class AddPatientPage : ContentPage
+	public partial class EditPatientPage : ContentPage
 	{
-		public AddPatientPage ()
+		public EditPatientPage ()
 		{
 			InitializeComponent ();
 		}
-
-        private void MyDatePicker_DateSelected(object sender, DateChangedEventArgs e)
-        {
-
-        }
-    }
+	}
 }

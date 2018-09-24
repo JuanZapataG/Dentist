@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:i18n="clr-namespace:Dentist.Helpers"
              x:Class="Dentist.Views.EditPatientPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
              Title ="{i18n:Translate EditPatient}">
     <ContentPage.Content>
         <ScrollView
@@ -74,7 +75,7 @@
                     <Entry
                         Grid.Column="1"
                         Grid.Row="2"
-                        Text="{Binding Address}"
+                        Text="{Binding Patient.Address}"
                         Placeholder="{i18n:Translate DescriptionAddress}"
                         FontSize="Small">
                     </Entry>
@@ -89,7 +90,7 @@
                         Grid.Column="1"
                         Grid.Row="3"
                         Keyboard="Telephone"
-                        Text="{Binding Phone}"
+                        Text="{Binding Patient.Phone}"
                         Placeholder="{i18n:Translate DescriptionPhone}"
                         FontSize="Small">
                     </Entry>
@@ -104,7 +105,7 @@
                         Grid.Row="4"
                         HorizontalOptions="End"
                         VerticalOptions="Center"
-                        IsToggled="{Binding HasAllergies, Mode=TwoWay}">
+                        IsToggled="{Binding Patient.HasAllergies, Mode=TwoWay}">
                     </Switch>
                     <Label 
                         Grid.Column="0"

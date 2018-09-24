@@ -225,7 +225,10 @@
   <data name="Confirm" xml:space="preserve">
     <value>Confirme!</value>
   </data>
-  <data name="EditPatients" xml:space="preserve">
+  <data name="EditPatient" xml:space="preserve">
     <value>Modifier les Patients !</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Rechercher !</value>
   </data>
 </root>

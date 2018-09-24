@@ -14,6 +14,12 @@
         <StackLayout 
             Padding="5"
             BindingContext="{Binding Patients}">
+            <SearchBar
+                HeightRequest="30"
+                Placeholder="{i18n:Translate Search}"
+                SearchCommand="{Binding SearchCommand}"
+                Text="{Binding Filter}"> 
+            </SearchBar>
             <ListView
                 HasUnevenRows="True"
                 IsRefreshing="{Binding IsRefreshing}"
@@ -28,10 +34,14 @@
                                 <MenuItem Text="{i18n:Translate Delete}" Command="{Binding DeletePatientCommand}" IsDestructive="True"/>
                             </ViewCell.ContextActions>
                             <Grid>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding EditPatientCommand}"/>
+                                </Grid.GestureRecognizers>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="2*"/>
                                     <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
                                 <Image 
                                     Grid.Column="0"
@@ -59,6 +69,12 @@
                                     Text="{Binding PatientSince}"
                                     VerticalOptions="Center">
                                 </Label>
+                                <Image 
+                                    Grid.Column="3"
+                                    Source="ic_action_chevron_right"
+                                    VerticalOptions="Center">
+                                    
+                                </Image>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>

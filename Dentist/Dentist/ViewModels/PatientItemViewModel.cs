@@ -1,7 +1,6 @@
 ﻿
-
 namespace Dentist.ViewModels
-   {
+{
     using System;
     using System.Linq;
     using System.Windows.Input;
@@ -37,23 +36,24 @@ namespace Dentist.ViewModels
             var url = Application.Current.Resources["UrlAPI"].ToString();
             var prefix = Application.Current.Resources["UrlPrefix"].ToString();
             var patientsController = Application.Current.Resources["UrlPatientsController"].ToString();
-            var response = await this.apiService.Delete(url, prefix, patientsController,this.PatientId);
+            var response = await this.apiService.Delete(url, prefix, patientsController, this.PatientId);
             if (!response.IsSuccess)
             {
-                
+
                 await Application.Current.MainPage.DisplayAlert(Languages.Error, response.Message, Languages.Accept);
                 return;
             }
             var patientsViewModel = PatientsViewModel.GetInstastance();
-            var deletePatient = patientsViewModel.Patients.Where(p => p.PatientId == this.PatientId).FirstOrDefault();
+            var deletePatient = patientsViewModel.MyPatients.Where(p => p.PatientId == this.PatientId).FirstOrDefault();
             if (deletePatient != null)
             {
-                patientsViewModel.Patients.Remove(deletePatient);
+                patientsViewModel.MyPatients.Remove(deletePatient);
             }
+            patientsViewModel.RefreshList();
         }
         private async void EditPatient()
         {
-            MainViewModel.GetInstastance().EditPatient = new EditPatientViewMode(this);
+            MainViewModel.GetInstastance().EditPatient = new EditPatientViewModel(this);
             await Application.Current.MainPage.Navigation.PushAsync(new EditPatientPage());
         }
         #endregion
@@ -82,7 +82,7 @@ namespace Dentist.ViewModels
             }
         }
 
-        
+
 
 
         #endregion

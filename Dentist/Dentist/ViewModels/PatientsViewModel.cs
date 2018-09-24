@@ -45,34 +45,58 @@
 
         public void RefreshList()
         {
-            var myListPatientItemViewModel = MyPatients.Select(p => new PatientItemViewModel
+            if (string.IsNullOrEmpty(this.Filter))
             {
-                PatientId = p.PatientId,
-                FirstName = p.FirstName,
-                LastName = p.LastName,
-                Address = p.Address,
-                Phone = p.Phone,
-                PatientSince = p.PatientSince,
-                TreatmentDescription = p.TreatmentDescription,
-                ImagePath = p.ImagePath,
-                HasAllergies = p.HasAllergies,
-                ImageArray = p.ImageArray,
+                var myListPatientItemViewModel = this.MyPatients.Select(p => new PatientItemViewModel
+                {
+                    PatientId = p.PatientId,
+                    FirstName = p.FirstName,
+                    LastName = p.LastName,
+                    Address = p.Address,
+                    Phone = p.Phone,
+                    PatientSince = p.PatientSince,
+                    TreatmentDescription = p.TreatmentDescription,
+                    ImagePath = p.ImagePath,
+                    HasAllergies = p.HasAllergies,
+                    ImageArray = p.ImageArray,
 
-            });
-            this.Patients = new ObservableCollection<PatientItemViewModel>(
-                myListPatientItemViewModel.OrderBy(p => p.FirstName));
+                });
+                this.Patients = new ObservableCollection<PatientItemViewModel>(
+                    myListPatientItemViewModel.OrderBy(p => p.FirstName));
+            }
+            else
+            {
+                var myListPatientItemViewModel = this.MyPatients.Select(p => new PatientItemViewModel
+                {
+                    PatientId = p.PatientId,
+                    FirstName = p.FirstName,
+                    LastName = p.LastName,
+                    Address = p.Address,
+                    Phone = p.Phone,
+                    PatientSince = p.PatientSince,
+                    TreatmentDescription = p.TreatmentDescription,
+                    ImagePath = p.ImagePath,
+                    HasAllergies = p.HasAllergies,
+                    ImageArray = p.ImageArray,
+
+                }).Where(p => p.FirstName.ToLower().Contains(this.Filter.ToLower())).ToList();
+
+                this.Patients = new ObservableCollection<PatientItemViewModel>(
+                    myListPatientItemViewModel.OrderBy(p => p.FirstName));
+            }
+           
         }
         #endregion
         #region Attributes
+        private string filter;
         private ObservableCollection<PatientItemViewModel> patients;
         private bool isRefreshing;
         private bool refreshCommand;
 
         #endregion
         #region Properties
-
+    
         public List<Patient> MyPatients { get; set; }
-
         public ObservableCollection<PatientItemViewModel> Patients {
             get { return this.patients; }
             set { this.SetValue(ref this.patients, value); }
@@ -81,15 +105,14 @@
             get { return this.isRefreshing; }
             set { this.SetValue(ref this.isRefreshing, value); }
         }
-        public ICommand RefreshCommand
+        public string Filter
         {
-            get
-            {
-                return new RelayCommand(LoadPatients);
+            get { return this.filter; }
+            set {
+                this.filter = value;
+                this.RefreshList();
             }
         }
-
-
 
         #endregion
         #region Constructors
@@ -112,10 +135,23 @@
             return instance;
         }
 
-        
+
         #endregion
         #region Commands
-
+        public ICommand RefreshCommand
+        {
+            get
+            {
+                return new RelayCommand(LoadPatients);
+            }
+        }
+        public ICommand SearchCommand
+        {
+            get
+            {
+                return new RelayCommand(RefreshList);
+            }
+        }
         #endregion
     }
 }

@@ -226,7 +226,10 @@ Bitte schalten Sie Ihre Interneteinstellungen ein.</value>
   <data name="Confirm" xml:space="preserve">
     <value>Հաստատում է.</value>
   </data>
-  <data name="EditPatients" xml:space="preserve">
+  <data name="EditPatient" xml:space="preserve">
     <value>Փոփոխել</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Որոնում</value>
   </data>
 </root>

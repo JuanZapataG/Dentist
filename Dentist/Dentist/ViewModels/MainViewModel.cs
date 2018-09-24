@@ -12,9 +12,11 @@
 
         #endregion
         #region Properties
+
         public PatientsViewModel Patients { get; set; }
         public AddPatientViewModel AddPatients { get; set; }
-        public EditPatientViewMode EditPatient { get; set; }
+        public EditPatientViewModel EditPatient { get; set; }
+
         #endregion
         #region Constructors
         public MainViewModel()
@@ -39,6 +41,7 @@
         #region Methods
         private async void GotoAddProduct()
         {
+            this.AddPatients = new AddPatientViewModel();
             await Application.Current.MainPage.Navigation.PushAsync(new AddPatientPage());
         }
         #endregion

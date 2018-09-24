@@ -3,19 +3,176 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:i18n="clr-namespace:Dentist.Helpers"
              x:Class="Dentist.Views.EditPatientPage"
-             BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title ="{i18n:Translate EditPatients}">>
-
+             Title ="{i18n:Translate EditPatient}">
     <ContentPage.Content>
         <ScrollView
             BindingContext="{Binding EditPatient}">
+
+            <StackLayout
             
-        
-        <StackLayout>
-            <Label Text="Welcome "
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+            Padding="5">
+
+                <Image 
+                    Source="{Binding ImageSource}" >
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ChangeImageCommand}"/>
+                    </Image.GestureRecognizers>
+
+                </Image>
+                <Label 
+                    FontSize="Small"
+                Text="{i18n:Translate ImagePath}"
+                    HorizontalOptions="Center">
+                </Label>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    <Label 
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Text="{i18n:Translate FirstName}"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Entry 
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        Text="{Binding Patient.FirstName}"
+                        Placeholder="{i18n:Translate DescriptionFirstName}"
+                        FontSize="Small">
+                    </Entry>
+
+                    <Label 
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        Text="{i18n:Translate LastName}"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        Text="{Binding Patient.LastName}"
+                        Placeholder="{i18n:Translate DescriptionLastName}"
+                        FontSize="Small">
+                    </Entry>
+
+                    <Label 
+                        Grid.Column="0"
+                        Grid.Row="2"
+                        Text="{i18n:Translate Address}"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        Text="{Binding Address}"
+                        Placeholder="{i18n:Translate DescriptionAddress}"
+                        FontSize="Small">
+                    </Entry>
+
+                    <Label 
+                        Grid.Column="0"
+                        Grid.Row="3"
+                        Text="{i18n:Translate Phone}"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="3"
+                        Keyboard="Telephone"
+                        Text="{Binding Phone}"
+                        Placeholder="{i18n:Translate DescriptionPhone}"
+                        FontSize="Small">
+                    </Entry>
+                    <Label 
+                        Grid.Column="0"
+                        Grid.Row="4"
+                Text="{i18n:Translate HasAllergies}"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Switch
+                        Grid.Column="1"
+                        Grid.Row="4"
+                        HorizontalOptions="End"
+                        VerticalOptions="Center"
+                        IsToggled="{Binding HasAllergies, Mode=TwoWay}">
+                    </Switch>
+                    <Label 
+                        Grid.Column="0"
+                        Grid.Row="5"
+                        Text="{i18n:Translate TreatmentDescription}"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="5"
+                        Text="{Binding TreatmentDescription}"
+                        Placeholder="{i18n:Translate DescriptionTreatmentDescription}"
+                        FontSize="Small">
+                    </Entry>
+
+                </Grid>
+                <StackLayout>
+                    <Label 
+                            Text="{i18n:Translate PatientSince}"
+                            VerticalOptions="Center">
+                    </Label>
+
+                    <DatePicker
+                            Date="{Binding PatientSinceD, Mode=TwoWay}">
+
+                    </DatePicker>
+                    <TimePicker
+                         Time="{Binding PatientSinceH, Mode=TwoWay}">
+
+                    </TimePicker>
+                </StackLayout>
+
+                <ActivityIndicator
+               IsRunning="{Binding IsRunning}"
+                VerticalOptions ="CenterAndExpand">
+
+                </ActivityIndicator>
+                <StackLayout
+                    Orientation="Horizontal">
+                    <Button
+                
+                BackgroundColor="Navy"
+                BorderRadius="23"
+                Command="{Binding SaveCommand}"
+                HeightRequest="46"
+                HorizontalOptions="FillAndExpand"
+                IsEnabled="{Binding IsEnabled}"
+                Text="{i18n:Translate Save}"
+                TextColor="White">
+
+                    </Button>
+                    <Button
+                
+                BackgroundColor="Red"
+                BorderRadius="23"
+                Command="{Binding DeleteCommand}"
+                HeightRequest="46"
+                HorizontalOptions="FillAndExpand"
+                IsEnabled="{Binding IsEnabled}"
+                Text="{i18n:Translate Delete}"
+                TextColor="White">
+
+                    </Button>
+                </StackLayout>
+                
+
+
+            </StackLayout>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

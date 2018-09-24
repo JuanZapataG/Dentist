@@ -198,9 +198,9 @@ namespace Dentist.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Edit Patients.
         /// </summary>
-        public static string EditPatients {
+        public static string EditPatient {
             get {
-                return ResourceManager.GetString("EditPatients", resourceCulture);
+                return ResourceManager.GetString("EditPatient", resourceCulture);
             }
         }
         
@@ -354,6 +354,15 @@ namespace Dentist.Resources {
         public static string Save {
             get {
                 return ResourceManager.GetString("Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search.
+        /// </summary>
+        public static string Search {
+            get {
+                return ResourceManager.GetString("Search", resourceCulture);
             }
         }
         

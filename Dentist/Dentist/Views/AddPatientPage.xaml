@@ -118,6 +118,7 @@
                     <Entry
                         Grid.Column="1"
                         Grid.Row="5"
+                        VerticalOptions="Center"
                         Text="{Binding TreatmentDescription}"
                         Placeholder="{i18n:Translate DescriptionTreatmentDescription}"
                         FontSize="Small">
@@ -136,7 +137,6 @@
                     </DatePicker>
                     <TimePicker
                          Time="{Binding PatientSinceH, Mode=TwoWay}">
-
                     </TimePicker>
                     </StackLayout>
                           

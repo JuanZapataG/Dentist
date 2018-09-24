@@ -155,9 +155,13 @@
         {
             get { return Resource.Confirm; }
         }
-        public static string EditPatients
+        public static string EditPatient
         {
-            get { return Resource.EditPatients; }
+            get { return Resource.EditPatient; }
+        }
+        public static string Search
+        {
+            get { return Resource.Search; }
         }
         
     }

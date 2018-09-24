@@ -1,6 +1,7 @@
 ﻿namespace Dentist.Helpers
 {
     using System.IO;
+
     public class FilesHelper
     {
         public static byte[] ReadFully(Stream input)

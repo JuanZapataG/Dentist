@@ -1,22 +1,21 @@
 ﻿namespace Dentist.ViewModels
 {
-    using System.Windows.Input;
-    using Helpers;
+    using Models;
     using Services;
-    using GalaSoft.MvvmLight.Command;
+    using Plugin.Media.Abstractions;
     using Xamarin.Forms;
-    using Dentist.Models;
+    using System.Windows.Input;
+    using GalaSoft.MvvmLight.Command;
+    using Dentist.Helpers;
     using System;
     using System.Linq;
-    using Plugin.Media.Abstractions;
-    using Plugin.Media;
 
-    public class AddPatientViewModel : BaseViewModel
+    public class EditPatientViewModel : BaseViewModel
     {
         #region Methods
         private async void Save()
         {
-            if (string.IsNullOrEmpty(this.FirstName))
+            if (string.IsNullOrEmpty(this.patient.FirstName))
             {
                 await Application.Current.MainPage.DisplayAlert(
                     Languages.Error,
@@ -24,15 +23,15 @@
                     Languages.Accept);
                 return;
             }
-            if (string.IsNullOrEmpty(this.LastName))
+            if (string.IsNullOrEmpty(this.patient.LastName))
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    Languages.Error, 
-                    Languages.LastNameError, 
+                    Languages.Error,
+                    Languages.LastNameError,
                     Languages.Accept);
                 return;
             }
-            if (string.IsNullOrEmpty(this.Address))
+            if (string.IsNullOrEmpty(this.patient.Address))
             {
                 await Application.Current.MainPage.DisplayAlert(
                     Languages.Error,
@@ -40,7 +39,7 @@
                     Languages.Accept);
                 return;
             }
-            if (string.IsNullOrEmpty(this.Phone))
+            if (string.IsNullOrEmpty(this.patient.Phone))
             {
                 await Application.Current.MainPage.DisplayAlert(
                     Languages.Error,
@@ -48,7 +47,7 @@
                     Languages.Accept);
                 return;
             }
-            if (string.IsNullOrEmpty(this.TreatmentDescription))
+            if (string.IsNullOrEmpty(this.patient.TreatmentDescription))
             {
                 await Application.Current.MainPage.DisplayAlert(
                     Languages.Error,
@@ -64,7 +63,7 @@
                 this.IsRunning = false;
                 this.IsEnabled = true;
                 await Application.Current.MainPage.DisplayAlert(
-                    Languages.Error, 
+                    Languages.Error,
                     connection.Message,
                     Languages.Accept);
                 return;
@@ -76,26 +75,11 @@
             {
                 imageArray = FilesHelper.ReadFully(this.file.GetStream());
             }
-           
-            var patient = new Patient
-            {
-                
-                FirstName = this.FirstName,
-                LastName = this.LastName,
-                Address = this.Address,
-                Phone = this.Phone,
-                PatientSince = this.PatientSince,
-                HasAllergies = this.HasAllergies,
-                ImageArray = imageArray,
-
-
-            };
 
             var url = Application.Current.Resources["UrlAPI"].ToString();
             var prefix = Application.Current.Resources["UrlPrefix"].ToString();
-            var Controller = Application.Current.Resources["UrlPatientsController"].ToString();
-            var response = await this.apiService.Post(url, prefix, Controller, patient);
-
+            var patientsController = Application.Current.Resources["UrlPatientsController"].ToString();
+            var response = await this.apiService.Put(url, prefix, patientsController, patient,patient.PatientId);
             if (!response.IsSuccess)
             {
                 this.IsRunning = false;
@@ -119,78 +103,71 @@
             this.IsEnabled = true;
             await Application.Current.MainPage.Navigation.PopAsync();
 
+
         }
-        private async void ChangeImage()
+        private async void Delete()
         {
-            await CrossMedia.Current.Initialize();
-            var source = await Application.Current.MainPage.DisplayActionSheet(
-            Languages.ImageSource,
-            Languages.Cancel,
-            null,
-            Languages.FromGallery,
-            Languages.NewPicture);
-            if (source == Languages.Cancel)
+            var answer = await Application.Current.MainPage.DisplayAlert(
+                Languages.Confirm,
+                Languages.DeleteConfirmation,
+                Languages.Yes,
+                Languages.No);
+            if (!answer)
             {
-                this.file = null;
+                return;
+
+            }
+            this.IsRunning = true;
+            this.IsEnabled = false;
+
+            var connection = await this.apiService.CheckConnection();
+            if (!connection.IsSuccess)
+            {
+                this.IsRunning = false;
+                this.IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert(Languages.Error, connection.Message, Languages.Accept);
                 return;
             }
-            if (source == Languages.NewPicture)
+            var url = Application.Current.Resources["UrlAPI"].ToString();
+            var prefix = Application.Current.Resources["UrlPrefix"].ToString();
+            var patientsController = Application.Current.Resources["UrlPatientsController"].ToString();
+            var response = await this.apiService.Delete(url, prefix, patientsController, this.Patient.PatientId);
+            if (!response.IsSuccess)
             {
-                this.file = await CrossMedia.Current.TakePhotoAsync(
-                new StoreCameraMediaOptions
-                {
-                    Directory = "Sample",
-                    Name = "test.jpg",
-                    PhotoSize = PhotoSize.Small,
-                }
-                );
+
+                await Application.Current.MainPage.DisplayAlert(Languages.Error, response.Message, Languages.Accept);
+                return;
             }
-            else
+            var patientsViewModel = PatientsViewModel.GetInstastance();
+            var deletePatient = patientsViewModel.MyPatients.Where(p => p.PatientId == this.Patient.PatientId).FirstOrDefault();
+            if (deletePatient != null)
             {
-                this.file = await CrossMedia.Current.PickPhotoAsync();
+                patientsViewModel.MyPatients.Remove(deletePatient);
             }
-            if (this.file != null)
-            {
-                this.ImageSource = ImageSource.FromStream(() =>
-                {
-                    var stream = file.GetStream();
-                    return stream;
-                });
-            }
+            patientsViewModel.RefreshList();
+            this.IsRunning = false;
+            this.IsEnabled = true;
+            await Application.Current.MainPage.Navigation.PopToRootAsync();
+
+
         }
         #endregion
 
         #region Attributes
-        private DateTime patientSince;
+        private Patient patient;
         private ApiService apiService;
         private bool isRunning;
         private bool isEnabled;
         private ImageSource imageSource;
         private MediaFile file;
-       
 
         #endregion
 
         #region Properties
-
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Address { get; set; }
-        public string Phone { get; set; }
-        public string TreatmentDescription { get; set; }
-        public bool HasAllergies { get; set; }
-        public DateTime PatientSinceD { get; set; }
-        public TimeSpan PatientSinceH { get; set; }
-        public DateTime PatientSince
+        public Patient Patient
         {
-           
-            get {
-                this.patientSince = PatientSinceD;
-                this.patientSince.AddHours(5);
-                this.patientSince = this.patientSince.AddHours(Convert.ToDouble(PatientSinceH.Hours));
-                this.patientSince = this.patientSince.AddMinutes(Convert.ToDouble(PatientSinceH.Minutes));
-                return this.patientSince; }
-            
+            get { return this.Patient; }
+            set { this.SetValue(ref this.patient, value); }
         }
         public bool IsEnabled
         {
@@ -200,27 +177,22 @@
         public bool IsRunning
         {
             get { return this.isRunning; }
-            set { this.SetValue(ref this.isRunning, value);}
+            set { this.SetValue(ref this.isRunning, value); }
         }
         public ImageSource ImageSource
         {
             get { return this.imageSource; }
             set { this.SetValue(ref this.imageSource, value); }
         }
-
-
-
         #endregion
 
         #region Constructors
-        public AddPatientViewModel()
+        public EditPatientViewModel(Patient patient)
         {
-            this.ImageSource = "noimage";
+            this.patient = patient;
+            this.ImageSource = patient.ImageFullPath;
             this.apiService = new ApiService();
             this.IsEnabled = true;
-            this.HasAllergies = false;
-            PatientSinceD = DateTime.Today;
-            
             
         }
         #endregion
@@ -229,20 +201,22 @@
         public ICommand SaveCommand
         {
             get
-            { 
-            return new RelayCommand(Save);
+            {
+                return new RelayCommand(Save);
             }
         }
-        public ICommand ChangeImageCommand
+        public ICommand DeleteCommand
         {
             get
             {
-                return new RelayCommand(ChangeImage);
+                return new RelayCommand(Delete);
             }
         }
 
-       
-
+        
         #endregion
+
+
+
     }
 }

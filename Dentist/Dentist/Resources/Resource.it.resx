@@ -231,4 +231,7 @@
   <data name="Search" xml:space="preserve">
     <value>Cerca!</value>
   </data>
+  <data name="ChangesSince" xml:space="preserve">
+    <value>Se si desidera modificare la data e l&amp;#39;ora dell&amp;#39;appuntamento, inserirla nello spazio seguente!</value>
+  </data>
 </root>

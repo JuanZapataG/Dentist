@@ -76,16 +76,17 @@
             {
                 imageArray = FilesHelper.ReadFully(this.file.GetStream());
             }
-           
+
             var patient = new Patient
             {
-                
+
                 FirstName = this.FirstName,
                 LastName = this.LastName,
                 Address = this.Address,
                 Phone = this.Phone,
                 PatientSince = this.PatientSince,
                 HasAllergies = this.HasAllergies,
+                TreatmentDescription = this.TreatmentDescription,
                 ImageArray = imageArray,
 
 
@@ -186,7 +187,6 @@
            
             get {
                 this.patientSince = PatientSinceD;
-                this.patientSince.AddHours(5);
                 this.patientSince = this.patientSince.AddHours(Convert.ToDouble(PatientSinceH.Hours));
                 this.patientSince = this.patientSince.AddMinutes(Convert.ToDouble(PatientSinceH.Minutes));
                 return this.patientSince; }

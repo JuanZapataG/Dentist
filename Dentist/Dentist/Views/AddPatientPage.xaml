@@ -37,8 +37,8 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
                         <RowDefinition Height="2*"/>
+                        <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <Label 
                         Grid.Column="0"
@@ -96,34 +96,34 @@
                         Placeholder="{i18n:Translate DescriptionPhone}"
                         FontSize="Small">
                     </Entry>
+                    
                     <Label 
                         Grid.Column="0"
                         Grid.Row="4"
-                Text="{i18n:Translate HasAllergies}"
+                        Text="{i18n:Translate TreatmentDescription}"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Editor
+                        Grid.Column="1"
+                        Grid.Row="4"
+                        Text="{Binding TreatmentDescription}"
+                        FontSize="Small">
+                    </Editor>
+
+                    <Label 
+                        Grid.Column="0"
+                        Grid.Row="5"
+                        Text="{i18n:Translate HasAllergies}"
                         VerticalOptions="Center">
                     </Label>
                     <Switch
                         Grid.Column="1"
-                        Grid.Row="4"
+                        Grid.Row="5"
                         HorizontalOptions="End"
                         VerticalOptions="Center"
                         IsToggled="{Binding HasAllergies, Mode=TwoWay}">
                     </Switch>
-                    <Label 
-                        Grid.Column="0"
-                        Grid.Row="5"
-                        Text="{i18n:Translate TreatmentDescription}"
-                        VerticalOptions="Center">
-                    </Label>
-                    <Entry
-                        Grid.Column="1"
-                        Grid.Row="5"
-                        VerticalOptions="Center"
-                        Text="{Binding TreatmentDescription}"
-                        Placeholder="{i18n:Translate DescriptionTreatmentDescription}"
-                        FontSize="Small">
-                    </Entry>
-                    
+
                 </Grid>
                 <StackLayout>
                     <Label 

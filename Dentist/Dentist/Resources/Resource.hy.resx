@@ -232,4 +232,7 @@ Bitte schalten Sie Ihre Interneteinstellungen ein.</value>
   <data name="Search" xml:space="preserve">
     <value>Որոնում</value>
   </data>
+  <data name="ChangesSince" xml:space="preserve">
+    <value>Եթե ​​ցանկանում եք փոխել նշանակման ամսաթիվը եւ ժամանակը, մուտքագրեք այն հետեւյալ տարածքում:</value>
+  </data>
 </root>

@@ -121,117 +121,117 @@
     <value>Error</value>
   </data>
   <data name="Accept" xml:space="preserve">
-    <value>Accept</value>
+    <value>Aceptar</value>
   </data>
   <data name="TurnOnInternet" xml:space="preserve">
-    <value>Please turn on your internet settings.</value>
+    <value>¡Enciende tu configuración de internet!</value>
   </data>
   <data name="NoInternet" xml:space="preserve">
-    <value>No internet connection.</value>
+    <value>No hay conexión a Internet</value>
   </data>
   <data name="Patients" xml:space="preserve">
-    <value>Patients</value>
+    <value>Pacientes</value>
   </data>
   <data name="AddPatients" xml:space="preserve">
-    <value>Add Patients</value>
+    <value>Añadir pacientes!</value>
   </data>
   <data name="FirstName" xml:space="preserve">
-    <value>First Name</value>
+    <value>Nombre</value>
   </data>
   <data name="DescriptionFirstName" xml:space="preserve">
-    <value>Enter your first name</value>
+    <value>Escribe tu nombre.</value>
   </data>
   <data name="LastName" xml:space="preserve">
     <value>LastName</value>
   </data>
   <data name="DescriptionLastName" xml:space="preserve">
-    <value>Enter your last name</value>
+    <value>Escribe tu apellido.</value>
   </data>
   <data name="Address" xml:space="preserve">
-    <value>Address</value>
+    <value>Dirección</value>
   </data>
   <data name="DescriptionAddress" xml:space="preserve">
-    <value>Enter your address</value>
+    <value>Introduzca su dirección</value>
   </data>
   <data name="Phone" xml:space="preserve">
-    <value>Phone</value>
+    <value>Teléfono</value>
   </data>
   <data name="DescriptionPhone" xml:space="preserve">
-    <value>Enter your Phone</value>
+    <value>Ingrese su Teléfono</value>
   </data>
   <data name="PatientSince" xml:space="preserve">
-    <value>Patient Since</value>
+    <value>Paciente desde!</value>
   </data>
   <data name="DescriptionPatientSince" xml:space="preserve">
-    <value>Enter date of appointment</value>
+    <value>Ingrese la fecha de la cita!</value>
   </data>
   <data name="TreatmentDescription" xml:space="preserve">
-    <value>Treatment Description</value>
+    <value>Descripción del tratamiento</value>
   </data>
   <data name="DescriptionTreatmentDescription" xml:space="preserve">
-    <value>Enter the description of the treatment</value>
+    <value>¡Ingrese la descripción del tratamiento!</value>
   </data>
   <data name="ImagePath" xml:space="preserve">
-    <value>Touch the image to change it.</value>
+    <value>Toca la imagen para cambiarla.</value>
   </data>
   <data name="HasAllergies" xml:space="preserve">
-    <value>Has Allergies</value>
+    <value>Alergias</value>
   </data>
   <data name="Save" xml:space="preserve">
-    <value>Save</value>
+    <value>Guardar</value>
   </data>
   <data name="FirtsNameError" xml:space="preserve">
-    <value>You a must enter a Firts Name</value>
+    <value>¡Debes ingresar un primer nombre!</value>
   </data>
   <data name="LastNameError" xml:space="preserve">
-    <value>You a must enter a Last Name</value>
+    <value>¡Debe introducir un nombre!</value>
   </data>
   <data name="AddressError" xml:space="preserve">
-    <value>You a must enter a Address</value>
+    <value>¡Debes ingresar una dirección!</value>
   </data>
   <data name="PhoneError" xml:space="preserve">
-    <value>You a must enter a Phone</value>
+    <value>¡Debes ingresar un teléfono!</value>
   </data>
   <data name="TreatmentDescriptionError" xml:space="preserve">
-    <value>You a must enter a Treatment Description</value>
+    <value>¡Debes ingresar una descripción del tratamiento!</value>
   </data>
   <data name="ImageSource" xml:space="preserve">
-    <value>Where do you take the picture?</value>
+    <value>¿Dónde tomas la foto?</value>
   </data>
   <data name="FromGallery" xml:space="preserve">
-    <value>From gallery</value>
+    <value>De la galería</value>
   </data>
   <data name="NewPicture" xml:space="preserve">
-    <value>Take a new picture</value>
+    <value>Tomar una nueva imagen</value>
   </data>
   <data name="Cancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Cancelar</value>
   </data>
   <data name="Edit" xml:space="preserve">
-    <value>Edit</value>
+    <value>Edición</value>
   </data>
   <data name="Delete" xml:space="preserve">
-    <value>Delete</value>
+    <value>Eliminar</value>
   </data>
   <data name="DeleteConfirmation" xml:space="preserve">
-    <value>Are your sure to delete this</value>
+    <value>Está seguro de eliminar esto?</value>
   </data>
   <data name="Yes" xml:space="preserve">
-    <value>Yes</value>
+    <value>Sí</value>
   </data>
   <data name="No" xml:space="preserve">
     <value>No</value>
   </data>
   <data name="Confirm" xml:space="preserve">
-    <value>Confirm</value>
+    <value>Confirmar</value>
   </data>
   <data name="EditPatient" xml:space="preserve">
-    <value>Edit Patients</value>
+    <value>¡Editar a pacientes!</value>
   </data>
   <data name="Search" xml:space="preserve">
-    <value>Search</value>
+    <value>Buscar</value>
   </data>
   <data name="ChangesSince" xml:space="preserve">
-    <value>If you want to change the date and time of the appointment enter it in the following space</value>
+    <value>Si desea cambiar la fecha y la hora de la cita, ingréselo en el siguiente espacio.</value>
   </data>
 </root>

@@ -7,15 +7,13 @@
              Title ="{i18n:Translate Patients}">
     <ContentPage.ToolbarItems>
         <ToolbarItem Icon="ic_action_add_circle.png" Command="{Binding AddPatientCommand}"/>
-
-
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout 
             Padding="5"
             BindingContext="{Binding Patients}">
             <SearchBar
-                HeightRequest="30"
+                HeightRequest="40"
                 Placeholder="{i18n:Translate Search}"
                 SearchCommand="{Binding SearchCommand}"
                 Text="{Binding Filter}"> 
@@ -25,14 +23,11 @@
                 IsRefreshing="{Binding IsRefreshing}"
                 IsPullToRefreshEnabled="True"
                 ItemsSource="{Binding Patients}"
-                RefreshCommand="{Binding RefreshCommand}">
+                RefreshCommand="{Binding RefreshCommand}"
+                SeparatorColor="DarkBlue">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <ViewCell.ContextActions>
-                                <MenuItem Text="{i18n:Translate Edit}" Command="{Binding EditPatientCommand}"/>
-                                <MenuItem Text="{i18n:Translate Delete}" Command="{Binding DeletePatientCommand}" IsDestructive="True"/>
-                            </ViewCell.ContextActions>
                             <Grid>
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding EditPatientCommand}"/>

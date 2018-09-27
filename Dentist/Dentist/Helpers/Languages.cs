@@ -163,8 +163,13 @@
         {
             get { return Resource.Search; }
         }
-        
+        public static string ChangesSince
+        {
+            get { return Resource.ChangesSince; }
+        }
+
     }
+    
 
 }
 

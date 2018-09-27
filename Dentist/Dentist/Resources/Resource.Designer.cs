@@ -106,6 +106,15 @@ namespace Dentist.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to If you want to change the date and time of the appointment enter it in the following space.
+        /// </summary>
+        public static string ChangesSince {
+            get {
+                return ResourceManager.GetString("ChangesSince", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirm.
         /// </summary>
         public static string Confirm {

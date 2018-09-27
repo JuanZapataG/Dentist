@@ -35,8 +35,8 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
                         <RowDefinition Height="2*"/>
+                        <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <Label 
                         Grid.Column="0"
@@ -94,49 +94,63 @@
                         Placeholder="{i18n:Translate DescriptionPhone}"
                         FontSize="Small">
                     </Entry>
+                    
                     <Label 
                         Grid.Column="0"
                         Grid.Row="4"
-                Text="{i18n:Translate HasAllergies}"
+                        Text="{i18n:Translate TreatmentDescription}"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Editor
+                        Grid.Column="1"
+                        Grid.Row="4"
+                        Text="{Binding Patient.TreatmentDescription}"
+                        FontSize="Small">
+                    </Editor>
+                    <Label 
+                        Grid.Column="0"
+                        Grid.Row="5"
+                        Text="{i18n:Translate HasAllergies}"
                         VerticalOptions="Center">
                     </Label>
                     <Switch
                         Grid.Column="1"
-                        Grid.Row="4"
+                        Grid.Row="5"
                         HorizontalOptions="End"
                         VerticalOptions="Center"
                         IsToggled="{Binding Patient.HasAllergies, Mode=TwoWay}">
                     </Switch>
-                    <Label 
-                        Grid.Column="0"
-                        Grid.Row="5"
-                        Text="{i18n:Translate TreatmentDescription}"
-                        VerticalOptions="Center">
-                    </Label>
-                    <Entry
-                        Grid.Column="1"
-                        Grid.Row="5"
-                        Text="{Binding TreatmentDescription}"
-                        Placeholder="{i18n:Translate DescriptionTreatmentDescription}"
-                        FontSize="Small">
-                    </Entry>
 
                 </Grid>
-                <StackLayout>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
                     <Label 
+                            Grid.Column="0"
+                            Grid.Row="0"
                             Text="{i18n:Translate PatientSince}"
                             VerticalOptions="Center">
                     </Label>
-
-                    <DatePicker
-                            Date="{Binding PatientSinceD, Mode=TwoWay}">
-
-                    </DatePicker>
-                    <TimePicker
+                    <Label  
+                            Grid.Column="1"
+                            Grid.Row="0"
+                            Text="{Binding Patient.PatientSince}"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center">
+                    </Label>
+                </Grid>
+                <Label 
+                           Text="{i18n:Translate ChangesSince}"
+                            VerticalOptions="Center">
+                </Label>
+                <DatePicker
+                            Date="{Binding Patient.PatientSince}">
+                </DatePicker>
+                <TimePicker
                          Time="{Binding PatientSinceH, Mode=TwoWay}">
-
-                    </TimePicker>
-                </StackLayout>
+                </TimePicker>
 
                 <ActivityIndicator
                IsRunning="{Binding IsRunning}"

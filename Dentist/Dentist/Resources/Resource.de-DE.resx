@@ -232,6 +232,6 @@
     <value>Suchen</value>
   </data>
   <data name="ChangesSince" xml:space="preserve">
-    <value>Wenn Sie das Datum und die Uhrzeit des Termins ändern möchten, geben Sie diesen in das folgende Feld ein!</value>
+    <value>Wenn Sie ändern möchten, das Datum und die Uhrzeit des Patienten Sinceplease ändern die Felder Datum und Uhrzeit.!</value>
   </data>
 </root>

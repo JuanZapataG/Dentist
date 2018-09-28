@@ -232,6 +232,6 @@
     <value>Search</value>
   </data>
   <data name="ChangesSince" xml:space="preserve">
-    <value>If you want to change the date and time of the appointment enter it in the following space</value>
+    <value>If you want to change the date and time of the patient sinceplease change the fields date and time.</value>
   </data>
 </root>

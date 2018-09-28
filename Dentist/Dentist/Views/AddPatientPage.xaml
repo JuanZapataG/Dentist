@@ -5,7 +5,8 @@
              xmlns:sys="clr-namespace:System;assembly=netstandard"
              x:Class="Dentist.Views.AddPatientPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title ="{i18n:Translate AddPatients}">
+             Title ="{i18n:Translate AddPatients}"
+             BackgroundColor="#dbe7f9">
     
     <ContentPage.Content>
         <ScrollView

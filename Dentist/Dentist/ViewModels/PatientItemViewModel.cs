@@ -13,6 +13,17 @@ namespace Dentist.ViewModels
 
     public class PatientItemViewModel : Patient
     {
+        #region Attributes
+        private ApiService apiService;
+        #endregion
+
+        #region Constructors
+        public PatientItemViewModel()
+        {
+            this.apiService = new ApiService();
+        }
+        #endregion
+
         #region Methods
 
         private async void DeletePatient()
@@ -57,15 +68,7 @@ namespace Dentist.ViewModels
             await Application.Current.MainPage.Navigation.PushAsync(new EditPatientPage());
         }
         #endregion
-        #region Attributes
-        private ApiService apiService;
-        #endregion
-        #region Constructors
-        public PatientItemViewModel()
-        {
-            this.apiService = new ApiService();
-        }
-        #endregion
+
         #region Commands
         public ICommand DeletePatientCommand
         {

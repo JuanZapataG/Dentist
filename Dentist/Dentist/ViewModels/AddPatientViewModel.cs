@@ -13,6 +13,73 @@
 
     public class AddPatientViewModel : BaseViewModel
     {
+
+        #region Attributes
+        private DateTime patientSince;
+        private ApiService apiService;
+        private bool isRunning;
+        private bool isEnabled;
+        private ImageSource imageSource;
+        private MediaFile file;
+
+
+        #endregion
+
+        #region Properties
+
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Address { get; set; }
+        public string Phone { get; set; }
+        public string TreatmentDescription { get; set; }
+        public bool HasAllergies { get; set; }
+        public DateTime PatientSinceD { get; set; }
+        public TimeSpan PatientSinceH { get; set; }
+        public DateTime PatientSince
+        {
+
+            get
+            {
+                this.patientSince = PatientSinceD;
+                this.patientSince = this.patientSince.AddHours(Convert.ToDouble(PatientSinceH.Hours));
+                this.patientSince = this.patientSince.AddMinutes(Convert.ToDouble(PatientSinceH.Minutes));
+                return this.patientSince;
+            }
+
+        }
+        public bool IsEnabled
+        {
+            get { return this.isEnabled; }
+            set { this.SetValue(ref this.isEnabled, value); }
+        }
+        public bool IsRunning
+        {
+            get { return this.isRunning; }
+            set { this.SetValue(ref this.isRunning, value); }
+        }
+        public ImageSource ImageSource
+        {
+            get { return this.imageSource; }
+            set { this.SetValue(ref this.imageSource, value); }
+        }
+
+
+
+        #endregion
+
+        #region Constructors
+        public AddPatientViewModel()
+        {
+            this.ImageSource = "noimage";
+            this.apiService = new ApiService();
+            this.IsEnabled = true;
+            this.HasAllergies = false;
+            PatientSinceD = DateTime.Today;
+
+
+        }
+        #endregion
+
         #region Methods
         private async void Save()
         {
@@ -158,70 +225,6 @@
                     return stream;
                 });
             }
-        }
-        #endregion
-
-        #region Attributes
-        private DateTime patientSince;
-        private ApiService apiService;
-        private bool isRunning;
-        private bool isEnabled;
-        private ImageSource imageSource;
-        private MediaFile file;
-       
-
-        #endregion
-
-        #region Properties
-
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Address { get; set; }
-        public string Phone { get; set; }
-        public string TreatmentDescription { get; set; }
-        public bool HasAllergies { get; set; }
-        public DateTime PatientSinceD { get; set; }
-        public TimeSpan PatientSinceH { get; set; }
-        public DateTime PatientSince
-        {
-           
-            get {
-                this.patientSince = PatientSinceD;
-                this.patientSince = this.patientSince.AddHours(Convert.ToDouble(PatientSinceH.Hours));
-                this.patientSince = this.patientSince.AddMinutes(Convert.ToDouble(PatientSinceH.Minutes));
-                return this.patientSince; }
-            
-        }
-        public bool IsEnabled
-        {
-            get { return this.isEnabled; }
-            set { this.SetValue(ref this.isEnabled, value); }
-        }
-        public bool IsRunning
-        {
-            get { return this.isRunning; }
-            set { this.SetValue(ref this.isRunning, value);}
-        }
-        public ImageSource ImageSource
-        {
-            get { return this.imageSource; }
-            set { this.SetValue(ref this.imageSource, value); }
-        }
-
-
-
-        #endregion
-
-        #region Constructors
-        public AddPatientViewModel()
-        {
-            this.ImageSource = "noimage";
-            this.apiService = new ApiService();
-            this.IsEnabled = true;
-            this.HasAllergies = false;
-            PatientSinceD = DateTime.Today;
-            
-            
         }
         #endregion
 

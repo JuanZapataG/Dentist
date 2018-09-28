@@ -11,6 +11,7 @@
         #region Attributes
 
         #endregion
+
         #region Properties
 
         public PatientsViewModel Patients { get; set; }
@@ -18,6 +19,7 @@
         public EditPatientViewModel EditPatient { get; set; }
 
         #endregion
+
         #region Constructors
         public MainViewModel()
         {
@@ -25,6 +27,7 @@
             this.Patients = new PatientsViewModel();
         }
         #endregion
+
         #region Singleton
         private static MainViewModel instance;
         public static MainViewModel GetInstastance()
@@ -38,6 +41,7 @@
 
 
         #endregion
+
         #region Methods
         private async void GotoAddProduct()
         {
@@ -45,6 +49,7 @@
             await Application.Current.MainPage.Navigation.PushAsync(new AddPatientPage());
         }
         #endregion
+
         #region Commands
         public ICommand AddPatientCommand
         {

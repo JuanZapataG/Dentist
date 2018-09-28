@@ -106,7 +106,7 @@ namespace Dentist.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If you want to change the date and time of the appointment enter it in the following space.
+        ///   Looks up a localized string similar to If you want to change the date and time of the patient sinceplease change the fields date and time..
         /// </summary>
         public static string ChangesSince {
             get {

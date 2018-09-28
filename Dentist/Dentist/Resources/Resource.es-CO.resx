@@ -232,6 +232,6 @@
     <value>Buscar</value>
   </data>
   <data name="ChangesSince" xml:space="preserve">
-    <value>Si desea cambiar la fecha y la hora de la cita, ingréselo en el siguiente espacio.</value>
+    <value>Si desea cambiar la fecha y hora de la sinceplease paciente cambian los campos fecha y hora.!</value>
   </data>
 </root>

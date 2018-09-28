@@ -13,6 +13,61 @@
 
     public class PatientsViewModel : BaseViewModel
     {
+ 
+        #region Attributes
+        private string filter;
+        private ObservableCollection<PatientItemViewModel> patients;
+        private bool isRefreshing;
+        private bool refreshCommand;
+
+        #endregion
+
+        #region Properties
+    
+        public List<Patient> MyPatients { get; set; }
+        public ObservableCollection<PatientItemViewModel> Patients {
+            get { return this.patients; }
+            set { this.SetValue(ref this.patients, value); }
+        }
+        public bool IsRefreshing {
+            get { return this.isRefreshing; }
+            set { this.SetValue(ref this.isRefreshing, value); }
+        }
+        public string Filter
+        {
+            get { return this.filter; }
+            set {
+                this.filter = value;
+                this.RefreshList();
+            }
+        }
+
+        #endregion
+
+        #region Constructors
+        public PatientsViewModel()
+        {
+            instance = this;
+            this.apiService = new ApiService();
+            this.LoadPatients();
+        }
+
+        #endregion
+
+        #region Singleton
+        private static PatientsViewModel instance;
+        public static PatientsViewModel GetInstastance()
+        {
+            if (instance==null)
+            {
+                return new PatientsViewModel();
+            }
+            return instance;
+        }
+
+
+        #endregion
+
         #region Methods
         private ApiService apiService;
         private async void LoadPatients()
@@ -35,7 +90,7 @@
                 await Application.Current.MainPage.DisplayAlert(Languages.Error, response.Message, Languages.Accept);
                 return;
             }
-            
+
 
             this.MyPatients = (List<Patient>)response.Result;
             this.RefreshList();
@@ -84,59 +139,10 @@
                 this.Patients = new ObservableCollection<PatientItemViewModel>(
                     myListPatientItemViewModel.OrderBy(p => p.FirstName));
             }
-           
+
         }
         #endregion
-        #region Attributes
-        private string filter;
-        private ObservableCollection<PatientItemViewModel> patients;
-        private bool isRefreshing;
-        private bool refreshCommand;
 
-        #endregion
-        #region Properties
-    
-        public List<Patient> MyPatients { get; set; }
-        public ObservableCollection<PatientItemViewModel> Patients {
-            get { return this.patients; }
-            set { this.SetValue(ref this.patients, value); }
-        }
-        public bool IsRefreshing {
-            get { return this.isRefreshing; }
-            set { this.SetValue(ref this.isRefreshing, value); }
-        }
-        public string Filter
-        {
-            get { return this.filter; }
-            set {
-                this.filter = value;
-                this.RefreshList();
-            }
-        }
-
-        #endregion
-        #region Constructors
-        public PatientsViewModel()
-        {
-            instance = this;
-            this.apiService = new ApiService();
-            this.LoadPatients();
-        }
-
-        #endregion
-        #region Singleton
-        private static PatientsViewModel instance;
-        public static PatientsViewModel GetInstastance()
-        {
-            if (instance==null)
-            {
-                return new PatientsViewModel();
-            }
-            return instance;
-        }
-
-
-        #endregion
         #region Commands
         public ICommand RefreshCommand
         {

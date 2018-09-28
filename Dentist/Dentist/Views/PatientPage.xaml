@@ -4,7 +4,8 @@
              xmlns:i18n="clr-namespace:Dentist.Helpers"
              x:Class="Dentist.Views.PatientsPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title ="{i18n:Translate Patients}">
+             Title ="{i18n:Translate Patients}"
+             BackgroundColor="#dbe7f9">
     <ContentPage.ToolbarItems>
         <ToolbarItem Icon="ic_action_add_circle.png" Command="{Binding AddPatientCommand}"/>
     </ContentPage.ToolbarItems>

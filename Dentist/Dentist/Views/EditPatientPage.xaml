@@ -4,7 +4,8 @@
              xmlns:i18n="clr-namespace:Dentist.Helpers"
              x:Class="Dentist.Views.EditPatientPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title ="{i18n:Translate EditPatient}">
+             Title ="{i18n:Translate EditPatient}"
+             BackgroundColor="#dbe7f9">
     <ContentPage.Content>
         <ScrollView
             BindingContext="{Binding EditPatient}">

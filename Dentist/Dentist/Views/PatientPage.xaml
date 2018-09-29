@@ -35,16 +35,15 @@
                                 </Grid.GestureRecognizers>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="2*"/>
                                     <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="1.5*"/>
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
                                 <Image 
                                     Grid.Column="0"
                                     Source="{Binding ImageFullPath }"
                                     WidthRequest="100">
-                                    
-                                </Image>
+                                 </Image>
                                 <StackLayout 
                                     Grid.Column="1"
                                      VerticalOptions="Center">
@@ -58,13 +57,36 @@
                                     Text="{Binding LastName}"
                                    >
                                     </Label>
+                                    <Label
+                                    FontAttributes="Bold"
+                                    Text="{Binding Address}"
+                                   >
+                                     </Label>
+                                    <Label
+                                    FontAttributes="Bold"
+                                    Text="{Binding Phone}"
+                                   >
+                                    </Label>
                                 </StackLayout>
-                                
-                                <Label
-                                    Grid.Column="2"
+                                <StackLayout
+                                    Grid.Column="2"   >
+                                    <Label
+                                    FontAttributes="Bold"
                                     Text="{Binding PatientSince}"
                                     VerticalOptions="Center">
-                                </Label>
+                                    </Label>
+                                    <Label 
+                                    HorizontalOptions="Fill"
+                                    Text="{Binding TreatmentDescription}"
+                                   >
+                                    </Label>
+                                    <Label
+                                        IsVisible="{Binding HasAllergies}"
+                                        Text="{i18n:Translate HasAllergies}">
+                                        
+                                    </Label>
+                                </StackLayout>
+                               
                                 <Image 
                                     Grid.Column="3"
                                     Source="ic_action_chevron_right"
